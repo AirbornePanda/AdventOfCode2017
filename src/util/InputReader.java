@@ -3,19 +3,17 @@ package util;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.BitSet;
 
 public class InputReader {
 
-    public static int[][] readInput(final String identifier) throws IOException, URISyntaxException {
+    public static int[][] readInputTo2dArray(final String identifier) throws IOException, URISyntaxException {
 
         int[][] matrix;
         final int[] rows = {0};
         final ArrayList<Integer> columns = new ArrayList<>();
 
-        File file = new File(InputReader.class.getClassLoader().getResource(identifier).toURI());
-
-        FileReader reader = new FileReader(file);
-        BufferedReader buffer = new BufferedReader(reader);
+        BufferedReader buffer = getReader(identifier);
 
         buffer.lines().forEach(
                 line -> {
@@ -24,8 +22,7 @@ public class InputReader {
                 }
         );
 
-        reader = new FileReader(file);
-        buffer = new BufferedReader(reader);
+        buffer = getReader(identifier);
 
         matrix = new int[rows[0]][];
 
@@ -41,9 +38,24 @@ public class InputReader {
             }
         }
 
-        reader.close();
         buffer.close();
 
         return matrix;
+    }
+
+    public static ArrayList<String> readInputToLArrayList(final String identifier) throws FileNotFoundException, URISyntaxException {
+        BufferedReader buffer = getReader(identifier);
+        final ArrayList<String> list = new ArrayList<>();
+
+        buffer.lines().forEach(list::add);
+
+        return list;
+    }
+
+    private static BufferedReader getReader (final String identifier) throws URISyntaxException, FileNotFoundException {
+        File file = new File(InputReader.class.getClassLoader().getResource(identifier).toURI());
+
+        FileReader reader = new FileReader(file);
+        return new BufferedReader(reader);
     }
 }

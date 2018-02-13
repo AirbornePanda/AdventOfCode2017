@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class D2Task1 {
     public static void main(String[] args) throws IOException, URISyntaxException {
         final long startTime = System.currentTimeMillis();
-        int[][] input = InputReader.readInput("day2/input");
+        int[][] input = InputReader.readInputTo2dArray("day2/input");
         final long fileReaderEndTime = System.currentTimeMillis();
 
         final Integer[] high = {null};
