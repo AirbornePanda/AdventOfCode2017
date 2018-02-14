@@ -9,7 +9,7 @@ import java.util.*;
 public class D4Task1 {
     public static void main(String[] args) throws IOException, URISyntaxException {
         final long startTime = System.currentTimeMillis();
-        List<String> input = InputReader.readInputToLArrayList("day4/input");
+        List<String> input = InputReader.readInputToLStringArrayList("day4/input");
         final long readerEnd = System.currentTimeMillis();
 
         Integer validLines = 0;

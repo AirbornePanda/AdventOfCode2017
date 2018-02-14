@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.BitSet;
+import java.util.List;
 
 public class InputReader {
 
@@ -43,11 +44,22 @@ public class InputReader {
         return matrix;
     }
 
-    public static ArrayList<String> readInputToLArrayList(final String identifier) throws FileNotFoundException, URISyntaxException {
+    public static List<String> readInputToLStringArrayList(final String identifier) throws FileNotFoundException, URISyntaxException {
         BufferedReader buffer = getReader(identifier);
-        final ArrayList<String> list = new ArrayList<>();
+        final List<String> list = new ArrayList<>();
 
         buffer.lines().forEach(list::add);
+
+        return list;
+    }
+
+    public static List<Integer> readInputToLIntegergArrayList(final String identifier) throws FileNotFoundException, URISyntaxException {
+        BufferedReader buffer = getReader(identifier);
+        final ArrayList<Integer> list = new ArrayList<>();
+
+        buffer.lines()
+                .mapToInt(Integer::valueOf)
+                .forEach(list::add);
 
         return list;
     }
