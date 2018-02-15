@@ -3,14 +3,15 @@ package day5;
 import util.InputReader;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
 public class D5Task2 {
-    public static void main(String[] args) throws FileNotFoundException, URISyntaxException {
+    public static void main(String[] args) throws IOException, URISyntaxException {
         final long startTime = System.currentTimeMillis();
 
-        List<Integer> input = InputReader.readInputToLIntegergArrayList("day5/input");
+        List<Integer> input = InputReader.readInputRowsToIntegergArrayList("day5/input");
 
         final long readerEnd = System.currentTimeMillis();
 

@@ -44,22 +44,41 @@ public class InputReader {
         return matrix;
     }
 
-    public static List<String> readInputToLStringArrayList(final String identifier) throws FileNotFoundException, URISyntaxException {
+    public static List<String> readInputRowsToLStringArrayList(final String identifier) throws IOException, URISyntaxException {
         BufferedReader buffer = getReader(identifier);
         final List<String> list = new ArrayList<>();
 
         buffer.lines().forEach(list::add);
 
+        buffer.close();
+
         return list;
     }
 
-    public static List<Integer> readInputToLIntegergArrayList(final String identifier) throws FileNotFoundException, URISyntaxException {
+    public static List<Integer> readInputRowsToIntegergArrayList(final String identifier) throws IOException, URISyntaxException {
         BufferedReader buffer = getReader(identifier);
-        final ArrayList<Integer> list = new ArrayList<>();
+        final List<Integer> list = new ArrayList<>();
 
         buffer.lines()
                 .mapToInt(Integer::valueOf)
                 .forEach(list::add);
+
+        buffer.close();
+
+        return list;
+    }
+
+    public static List<Integer> readInputColumnsToIntegergArrayList(final String identifier) throws IOException, URISyntaxException {
+        BufferedReader buffer = getReader(identifier);
+        List<Integer> list = new ArrayList<>();
+
+        String input = buffer.readLine();
+
+        buffer.close();
+
+        for (String value: input.trim().split("\\s+")){
+            list.add(Integer.valueOf(value));
+        }
 
         return list;
     }
